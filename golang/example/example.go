@@ -4,7 +4,7 @@ import (
 	"aoc2020/input"
 )
 
-// Part1 returns sum on ints
+// Part1 returns sum of ints
 func Part1(filename string) int {
 	nums := input.ReadNumbers(filename)
 	sum := 0 
