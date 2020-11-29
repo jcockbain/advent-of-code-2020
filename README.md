@@ -9,7 +9,7 @@ For example, this is what I run each day to create my boilerplate.
 
 ```bash
 
-# creates dirs at go/day{day}, python/src/day{day}, python/text/day{day}
+# creates dirs at go/day{day}, python/src/day{day}, python/test/day{day}
 # from the templates in each of those repos
 # then fetches input and places into each of those dirs
 ./new_day {day}
@@ -21,6 +21,6 @@ For example, this is what I run each day to create my boilerplate.
 - Template
 
     - [Python](python/src/template)
-    - [Go](golang/template)
+    - [Go](go/template)
 
 - Day 1
