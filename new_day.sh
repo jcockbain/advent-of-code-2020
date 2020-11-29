@@ -31,7 +31,6 @@ curl "${INPUT_URL}" -H "cookie: session=${AOC_COOKIE}" -o "${TEMP_INPUT}" 2>/dev
 
 cp ${TEMP_INPUT} ${GOROOT}/input.txt
 cp ${TEMP_INPUT} ${PYTHON_ROOT}/input.txt
-cp ${TEMP_INPUT} ${PYTHON_TEST_ROOT}/input.txt
 
 # clean up
 

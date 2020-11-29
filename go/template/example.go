@@ -1,7 +1,7 @@
 package main
 
 import (	
-	"aoc2020/input"
+	input "aoc2020/inpututils"
 
 	"fmt"
 )
