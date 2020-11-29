@@ -53,7 +53,7 @@ This [answer](https://stackoverflow.com/questions/37006114/anaconda-permanently-
 
 These should be able to run from anywhere. 🤞
 
-```Python
+```python
 # get answers
 python python/src/day{day}/solution.py
 
