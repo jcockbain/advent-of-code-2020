@@ -26,23 +26,30 @@ This is the script I run each day to generate boilerplate.
 
 ### Go
 
+These need to be run from inside `/go`.
+
 ```golang
+// get answers - from the days dir (e.g go/day1/)
+go run day{day}.go
 
-// get answers
-go run day{day}/day{day}.go
+// run tests
+go test
 
-// run tests (individual day)
-go test day{day}
-
-// run tests (whole suite)
+// run tests - recursive
 go test ./...
 
 ```
 
 ### Python
 
-```Python
+I use Miniconda Python env.
+Setting up with the local module imports can be a bit awakward. 
+This [answer](https://stackoverflow.com/questions/37006114/anaconda-permanently-include-external-packages-like-in-pythonpath) was helpful for me getting past pesky `ModuleNotFound` errors!
 
+
+These should be able to run from anywhere. 🤞
+
+```Python
 # get answers
 python python/src/day{day}/solution.py
 
