@@ -27,15 +27,15 @@ This is the script I run each day to generate boilerplate.
 ### Go
 
 ```golang
-# (from /go dir)
+// (from /go dir)
 
-# get answers
+// get answers
 go run day{day}/day{day}.go
 
-# run tests (individual day)
+// run tests (individual day)
 go test day{day}
 
-# run tests (whole suite)
+// run tests (whole suite)
 go test ./...
 
 ```
