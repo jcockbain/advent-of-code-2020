@@ -19,7 +19,7 @@ This is the script I run each day to generate boilerplate.
 ```bash
 # creates dirs at go/day{day}, python/src/day{day}, python/test/day{day}
 # from the templates in each of those repos
-# then fetches input and places into each of those dirs (e.g go/day{day}/input.txt)
+# then fetches input and places in place for each repo
 ./new_day 2020 {day}
 
 ```
@@ -27,7 +27,6 @@ This is the script I run each day to generate boilerplate.
 ### Go
 
 ```golang
-// (from /go dir)
 
 // get answers
 go run day{day}/day{day}.go
