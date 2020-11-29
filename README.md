@@ -36,10 +36,10 @@ These need to be run from inside `/go`.
 // get answers - from the days dir (e.g go/day1/)
 go run day{day}.go
 
-// run tests
+// run tests - also from the dir of the day
 go test
 
-// run tests - recursive
+// run tests - run all tests recursively
 go test ./...
 
 ```
