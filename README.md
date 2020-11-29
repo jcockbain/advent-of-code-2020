@@ -10,7 +10,7 @@ For now the repo contains a few things that I hope will save me repeating boring
 
 ## Running the code
 
-How I run the code, works on my machine!
+How I run the code, works on my machine (until I start trying to solve the problems 🥴).
 
 ### Helpers
 
