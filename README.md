@@ -14,8 +14,6 @@ How I run the code, works on my machine!
 
 ### Helpers
 
-This is the script I run each day to generate boilerplate.
-
 ```bash
 # creates dirs at go/day{day}, python/src/day{day}, python/test/day{day}
 # from the templates in each of those repos
