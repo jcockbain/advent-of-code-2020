@@ -75,3 +75,4 @@ pytest
 - [Day 1 - Report Repair](https://adventofcode.com/2020/day/1)
 
     - [Python](python/src/day1/main.py)
+    - [Go](go/day1/main.go)

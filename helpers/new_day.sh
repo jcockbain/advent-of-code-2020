@@ -10,17 +10,13 @@ echo "Creating Boilerplate for year ${YEAR} day ${DAY}"
 PYTHON_ROOT=python/src/day${DAY}
 PYTHON_TEST_ROOT=python/test/day${DAY}
 
-cp -TR python/src/template $PYTHON_ROOT
-cp -TR python/test/template $PYTHON_TEST_ROOT
+cp -n -TR python/src/template $PYTHON_ROOT
+cp -n -TR python/test/template $PYTHON_TEST_ROOT
 
 # go
 
 GOROOT=go/day${DAY}
-
-cp -TR go/template go/day${DAY}
-
-# mv {GOROOT}/example.go ${GOROOT}/day${DAY}.go
-# mv ${GOROOT}/example_test.go ${GOROOT}/day${DAY}_test.go
+cp -n -TR go/template go/day${DAY}
 
 # copy input
 
