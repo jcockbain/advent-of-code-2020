@@ -51,7 +51,7 @@ Setting up with the local module imports can be a bit awakward.
 This [answer](https://stackoverflow.com/questions/37006114/anaconda-permanently-include-external-packages-like-in-pythonpath) was helpful for me getting past pesky `ModuleNotFound` errors!
 
 
-These should be able to run from anywhere. 🤞
+These commands should be able to run from anywhere inside the repo. 🤞
 
 ```python
 # get answers
