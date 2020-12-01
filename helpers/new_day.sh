@@ -17,7 +17,7 @@ cp -TR python/test/template $PYTHON_TEST_ROOT
 
 GOROOT=go/day${DAY}
 
-cp -TR golang/template golang/day${DAY}
+cp -TR go/template go/day${DAY}
 
 mv {GOROOT}/example.go ${GOROOT}/day${DAY}.go
 mv ${GOROOT}/example_test.go ${GOROOT}/day${DAY}_test.go
