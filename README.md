@@ -73,3 +73,5 @@ pytest
     - [Go](go/template)
 
 - Day 1
+
+    - [Python](python/src/day1/solution.py)
