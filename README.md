@@ -17,7 +17,7 @@ How I run the code, works on my machine (until I start trying to solve the probl
 ```bash
 # creates dirs at go/day{day}, python/src/day{day}, python/test/day{day}
 # from the templates in each of those repos
-# then fetches input and places in place for each repo
+# then fetches input and sticks it where I want it (next to the solutions)
 ./helpers/new_day.sh 2020 {day}
 
 # attempt to destroy anything created above ;)
@@ -46,8 +46,8 @@ go test ./...
 
 ### Python
 
-I use Miniconda Python env.
-Setting up with the local module imports can be a bit awakward. 
+I use a Miniconda Python env.
+Setting up with the local module imports can be a bit awkward. 
 This [answer](https://stackoverflow.com/questions/37006114/anaconda-permanently-include-external-packages-like-in-pythonpath) was helpful for me getting past pesky `ModuleNotFound` errors!
 
 
