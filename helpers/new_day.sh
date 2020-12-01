@@ -19,8 +19,8 @@ GOROOT=go/day${DAY}
 
 cp -TR go/template go/day${DAY}
 
-mv {GOROOT}/example.go ${GOROOT}/day${DAY}.go
-mv ${GOROOT}/example_test.go ${GOROOT}/day${DAY}_test.go
+# mv {GOROOT}/example.go ${GOROOT}/day${DAY}.go
+# mv ${GOROOT}/example_test.go ${GOROOT}/day${DAY}_test.go
 
 # copy input
 

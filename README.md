@@ -34,7 +34,7 @@ These need to be run from inside `/go`.
 
 ```golang
 // get answers - from the days dir (e.g go/day1/)
-go run day{day}.go
+go run main.go
 
 // run tests - also from the dir of the day
 go test
@@ -55,10 +55,10 @@ These commands should be able to run from anywhere inside the repo. 🤞
 
 ```python
 # get answers
-python python/src/day{day}/solution.py
+python python/src/day{day}/main.py
 
 # run tests (individual day)
-python python/test/day{day}/test_solution.py
+python python/test/day{day}/test_main.py
 
 # run tests (whole suite)
 pytest
@@ -74,4 +74,4 @@ pytest
 
 - [Day 1 - Report Repair](https://adventofcode.com/2020/day/1)
 
-    - [Python](python/src/day1/solution.py)
+    - [Python](python/src/day1/main.py)
