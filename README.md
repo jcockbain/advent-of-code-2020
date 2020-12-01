@@ -72,6 +72,6 @@ pytest
     - [Python](python/src/template)
     - [Go](go/template)
 
-- Day 1
+- [Day 1 - Report Repair](https://adventofcode.com/2020/day/1)
 
     - [Python](python/src/day1/solution.py)
