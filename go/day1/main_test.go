@@ -15,23 +15,23 @@ func TestPart2(t *testing.T) {
 	assert.Equal(t, 82498112, got)
 }
 
-func testTwoSum(t *testing.T){
+func testTwoSum(t *testing.T) {
 	t.Parallel()
-	testCases := []struct{
-		name string
-		ints []int
-		target int
+	testCases := []struct {
+		name     string
+		ints     []int
+		target   int
 		expected int
-	} {
+	}{
 		{
 			"test-1",
-			[]int{1, 2, 3, 4 },
+			[]int{1, 2, 3, 4},
 			5,
 			6,
 		},
 		{
 			"test-2",
-			[]int{10, 21, 31, 4 },
+			[]int{10, 21, 31, 4},
 			14,
 			40,
 		},
@@ -45,7 +45,7 @@ func testTwoSum(t *testing.T){
 
 	for _, tt := range testCases {
 		tt := tt
-		t.Run(tt.name, func(t *testing.T){
+		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 			got, err := twoSum(tt.ints, tt.target)
 			assert.Nil(t, err)
