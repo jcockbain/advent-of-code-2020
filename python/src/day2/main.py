@@ -1,15 +1,14 @@
 from src.common.file_utils import get_path, read_lines
+import re
 
-# do some regex? 
 
 def part_one(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
     valid_passwords = []
     for word in lines:
-        code, password = word.split(":")
-        numbers, letter = code.split(" ")
-        min_count, max_count = [int(x) for x in numbers.split("-")]
-        if min_count <= password.count(letter) <= max_count:
+        min_count, max_count, letter, password = re.search(
+            r'(\d+)-(\d+) ([a-z]): ([a-z]+)', word).groups()
+        if int(min_count) <= password.count(letter) <= int(max_count):
             valid_passwords.append(password)
     return len(valid_passwords)
 
@@ -18,10 +17,9 @@ def part_two(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
     valid_passwords = []
     for word in lines:
-        code, password = word.split(":")
-        numbers, letter = code.split(" ")
-        pos1, pos2 = [int(x) for x in numbers.split("-")]
-        if (password[pos1] == letter) ^ (password[pos2] == letter):
+        pos1, pos2, letter, password = re.search(
+            r'(\d+)-(\d+) ([a-z]): ([a-z]+)', word).groups()
+        if (password[int(pos1) - 1] == letter) ^ (password[int(pos2) - 1] == letter):
             valid_passwords.append(password)
     return len(valid_passwords)
 
