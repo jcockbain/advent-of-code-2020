@@ -22,11 +22,9 @@ func Part1(filename string) int {
 	lines := input.ReadLines(filename)
 	validPasswords := 0
 	for _, line := range(lines){
-		re := regexp.MustCompile(`(\d+)-(\d+) ([a-z]): ([a-z]+)`)
-		parts := re.FindStringSubmatch(line)
-		min, max, letter, pword := parts[1], parts[2], parts[3], parts[4]
+		min, max, letter, pword := getParts(line)		
 		letterCount := strings.Count(pword, letter)
-		if toInt(min) <= letterCount && letterCount <= toInt(max) {
+		if min <= letterCount && letterCount <= max {
 			validPasswords += 1
 		}
 	}
@@ -37,18 +35,18 @@ func Part2(filename string) int {
 	lines := input.ReadLines(filename)
 	validPasswords := 0
 	for _, line := range(lines){
-		re := regexp.MustCompile(`(\d+)-(\d+) ([a-z]): ([a-z]+)`)
-		parts := re.FindStringSubmatch(line)
-		pos1, pos2, letter, pword := parts[1], parts[2], parts[3], parts[4]
-		
-		// XOR - for booleans equivalent to !=
-		X := string(pword[toInt(pos1) - 1]) == letter
-		Y := string(pword[toInt(pos2) - 1]) == letter
-		if X != Y {
+		pos1, pos2, letter, pword := getParts(line)
+		if (string(pword[pos1 - 1]) == letter) != (string(pword[pos2 - 1]) == letter) {
 			validPasswords += 1
 		}
 	}
 	return validPasswords
+}
+
+func getParts(line string) (int, int, string, string) {
+	re := regexp.MustCompile(`(\d+)-(\d+) ([a-z]): ([a-z]+)`)
+	parts := re.FindStringSubmatch(line)
+	return toInt(parts[1]), toInt(parts[2]), parts[3], parts[4]
 }
 
 func check(err error) {
