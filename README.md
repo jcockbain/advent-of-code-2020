@@ -80,3 +80,4 @@ pytest
 - [Day 2 - Password Philosophy](https://adventofcode.com/2020/day/2)
 
     - [Python](python/src/day2/main.py)
+    - [Go](go/day2/main.go)
