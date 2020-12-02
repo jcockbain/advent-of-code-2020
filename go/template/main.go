@@ -4,6 +4,7 @@ import (
 	input "aoc2020/inpututils"
 
 	"fmt"
+	"strconv"
 )
 
 func main(){
@@ -32,4 +33,10 @@ func check(err error) {
 	if err != nil {
 		panic(err)	
 	}
+}
+
+func toInt(s string) int {
+	i, err := strconv.Atoi(s)
+	check(err)
+	return i
 }
