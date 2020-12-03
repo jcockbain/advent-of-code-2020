@@ -19,13 +19,9 @@ def part_two(filename: str) -> int:
     return reduce((lambda x, y: x * y), trees)
 
 
-def get_trees(down, right, lines):
-    x, y, trees, width = 0, 0, 0, len(lines[0])
-    while y < len(lines):
-        trees += lines[y][x % width] == "#"
-        x += right
-        y += down
-    return trees
+def get_trees(dy, dx, lines):
+    h, w = len(lines), len(lines[0])
+    return sum([lines[i * dy][(i * dx) % w] == "#" for i in range(0, h // dy)])
 
 
 if __name__ == '__main__':

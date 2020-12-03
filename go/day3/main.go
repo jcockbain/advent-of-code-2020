@@ -4,7 +4,6 @@ import (
 	input "aoc2020/inpututils"
 
 	"fmt"
-	"strconv"
 )
 
 func main(){
@@ -15,28 +14,39 @@ func main(){
 	fmt.Println(Part2("input.txt"))
 }
 
+type treeCounter struct {
+	lines []string
+	h, w int
+}
+
+func (tc treeCounter) count (dx int, dy int) int {
+	x, y, trees := 0, 0, 0
+	for y < tc.h {
+		if string(tc.lines[y][x % tc.w]) == "#" {
+			trees += 1
+		}
+		x += dx
+		y += dy
+	}
+	return trees
+}
 
 func Part1(filename string) int {
-	nums := input.ReadNumbers(filename)
-	sum := 0 
-	for _, i := range(nums){
-		sum += i
+	lines := input.ReadLines(filename)
+	tc := treeCounter {
+		lines: lines,
+		w: len(lines[0]),
+		h: len(lines),
 	}
-	return sum
+	return tc.count(3, 1)
 }
 
-func Part2(filename string) string {
-	return filename
-}
-
-func check(err error) {
-	if err != nil {
-		panic(err)	
+func Part2(filename string) int {
+	lines := input.ReadLines(filename)
+	tc := treeCounter {
+		lines: lines,
+		w: len(lines[0]),
+		h: len(lines),
 	}
-}
-
-func toInt(s string) int {
-	i, err := strconv.Atoi(s)
-	check(err)
-	return i
+	return tc.count(1, 1) * tc.count(3, 1) * tc.count(5, 1) * tc.count(7, 1) * tc.count(1, 2)
 }
