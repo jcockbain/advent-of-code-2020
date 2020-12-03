@@ -1,4 +1,5 @@
 from src.common.file_utils import get_path, read_lines
+from functools import reduce
 
 
 def part_one(filename: str) -> int:
@@ -8,7 +9,14 @@ def part_one(filename: str) -> int:
 
 def part_two(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
-    return get_trees(1, 1, lines) * get_trees(1, 3, lines) * get_trees(1, 5, lines) * get_trees(1, 7, lines) * get_trees(2, 1, lines)
+    trees = [
+        get_trees(1, 1, lines),
+        get_trees(1, 3, lines),
+        get_trees(1, 5, lines),
+        get_trees(1, 7, lines),
+        get_trees(2, 1, lines)
+    ]
+    return reduce((lambda x, y: x * y), trees)
 
 
 def get_trees(down, right, lines):
