@@ -28,13 +28,11 @@ func newTreeCounter(lines []string) treeCounter {
 } 
 
 func (tc treeCounter) count (dx int, dy int) int {
-	x, y, trees := 0, 0, 0
-	for y < tc.h {
-		if string(tc.lines[y][x % tc.w]) == "#" {
+	var trees int;
+	for i := 0; i < tc.h / dy; i += 1 {
+		if string(tc.lines[i * dy][(i * dx) % tc.w]) == "#" {
 			trees += 1
 		}
-		x += dx
-		y += dy
 	}
 	return trees
 }
