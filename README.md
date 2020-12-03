@@ -81,3 +81,7 @@ pytest
 
     - [Python](python/src/day2/main.py)
     - [Go](go/day2/main.go)
+
+- [Day 3 - Toboggan Trajectory](https://adventofcode.com/2020/day/3)
+
+    - [Python](python/src/day3/main.py)
