@@ -1,14 +1,16 @@
 import unittest
 
-from src.day4.main import part_two, check_byr, check_iyr, check_eyr, check_hgt, check_hcl, check_ecl, check_pid
+from src.day4.main import part_one, part_two, check_byr, check_iyr, check_eyr, check_hgt, check_hcl, check_ecl, check_pid
 
 
 class TestDay01(unittest.TestCase):
     def test_part_one(self):
-        self.assertEqual(0, part_two('test_input_1.txt'))
+        self.assertEqual(206, part_one('input.txt'))
 
     def test_part_two(self):
+        self.assertEqual(0, part_two('test_input_1.txt'))
         self.assertEqual(4, part_two('test_input_2.txt'))
+        self.assertEqual(123, part_two('input.txt'))
 
     def test_byr(self):
         tests_true = [
@@ -27,7 +29,7 @@ class TestDay01(unittest.TestCase):
         ]
         for v in tests_false:
             self.assertFalse(check_byr(v))
-   
+
     def test_iry(self):
         tests_true = [
             "2015",
@@ -43,7 +45,7 @@ class TestDay01(unittest.TestCase):
         ]
         for v in tests_false:
             self.assertFalse(check_iyr(v))
-    
+
     def test_eyr(self):
         tests_true = [
             "2020",
@@ -60,7 +62,7 @@ class TestDay01(unittest.TestCase):
         ]
         for v in tests_false:
             self.assertFalse(check_eyr(v))
-   
+
     def test_hgt(self):
         tests_true = [
             "60in",
@@ -75,7 +77,7 @@ class TestDay01(unittest.TestCase):
         ]
         for test in tests_true:
             self.assertTrue(check_hgt(test))
-        
+
         for test in tests_false:
             self.assertFalse(check_hgt(test))
 
@@ -96,10 +98,10 @@ class TestDay01(unittest.TestCase):
         ]
         for test in tests_true:
             self.assertTrue(check_ecl(test))
-        
+
         for test in tests_false:
             self.assertFalse(check_ecl(test))
-    
+
     def test_hcl(self):
         tests_true = [
             "#123abc",
@@ -110,7 +112,7 @@ class TestDay01(unittest.TestCase):
         ]
         for test in tests_true:
             self.assertTrue(check_hcl(test))
-        
+
         for test in tests_false:
             self.assertFalse(check_hcl(test))
 
@@ -124,7 +126,7 @@ class TestDay01(unittest.TestCase):
         ]
         for test in tests_true:
             self.assertTrue(check_pid(test))
-        
+
         for test in tests_false:
             self.assertFalse(check_pid(test))
 

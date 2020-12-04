@@ -7,14 +7,13 @@ def part_one(filename: str) -> int:
     pports = lines.split("\n\n")
     valid = []
     for p in pports:
-        valid_f = 0
-        p = p.replace("\n", " ")
-        fields = p.split()
+        fields = p.replace("\n", " ").split()
+        valid_fields = 0
         for f in fields:
             k, v = f.split(":")
             if k != "cid":
-                valid_f += 1
-        if valid_f >= 7:
+                valid_fields += 1
+        if valid_fields >= 7:
             valid.append(p)
     return len(valid)
 
@@ -22,53 +21,42 @@ def part_one(filename: str) -> int:
 def part_two(filename: str) -> int:
     lines = read_raw(get_path(__file__, filename))
     pports = lines.split("\n\n")
-    valid = []
+    valid_pports = []
     for p in pports:
-        valid_f = 0
+        valid_fields = 0
         p = p.replace("\n", " ")
         fields = p.split()
         for f in fields:
             k, v = f.split(":")
-            if k in checks:
-                if checks[k](v):
-                    valid_f += checks[k](v)
-        if valid_f >= 7:
-            valid.append(p)
-    return len(valid)
+            valid_fields += checks[k](v)
+        if valid_fields >= 7:
+            valid_pports.append(p)
+    return len(valid_pports)
 
 
 def check_byr(s):
-    if not s.isdigit():
-        return False
-    if len(s) != 4:
+    if not s.isdigit() and len(s) != 4:
         return False
     return 1920 <= int(s) <= 2002
 
 
 def check_iyr(s):
-    if not s.isdigit():
-        return False
-    if len(s) != 4:
+    if not s.isdigit() and len(s) != 4:
         return False
     return 2010 <= int(s) <= 2020
 
 
 def check_eyr(s):
-    if not s.isdigit():
-        return False
-    if len(s) != 4:
+    if not s.isdigit() and len(s) != 4:
         return False
     return 2020 <= int(s) <= 2030
 
 
 def check_hgt(s):
-    # units = [c for c in s if c.isalpha()]
     r = re.search(r'(\d+)([a-z]{2})', s)
     if not r:
         return False
-    n, u = "", ""
-    if r:
-        n, u = r.groups()
+    n, u = r.groups()
     if u == "in":
         return 59 <= int(n) <= 76
     if u == "cm":
