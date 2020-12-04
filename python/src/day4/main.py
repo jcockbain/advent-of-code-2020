@@ -61,7 +61,7 @@ def check_hgt(s):
 
 
 def check_hcl(s):
-    return re.search(r'#[a-f\d]', s) is not None
+    return re.search(r'#[a-f\d]{6}', s) is not None
 
 
 def check_ecl(s):
