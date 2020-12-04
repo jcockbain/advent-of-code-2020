@@ -43,15 +43,13 @@ def check_eyr(s):
 
 
 def check_hgt(s):
-    r = re.search(r'(\d+)([a-z]{2})', s)
-    if not r:
+    try:
+        val, unit = re.search(r'(\d+)([a-z]{2})', s).groups()
+    except AttributeError:
         return False
-    val, unit = r.groups()
-    if unit == "in":
-        return 59 <= int(val) <= 76
-    if unit == "cm":
-        return 150 <= int(val) <= 193
-    return False
+    if unit not in ["in", "cm"]:
+        return False
+    return 59 <= int(val) <= 76 if unit == "in" else 150 <= int(val) <= 193
 
 
 def check_hcl(s):
