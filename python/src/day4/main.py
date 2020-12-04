@@ -24,8 +24,7 @@ def part_two(filename: str) -> int:
     valid_pports = []
     for p in pports:
         valid_fields = 0
-        p = p.replace("\n", " ")
-        fields = p.split()
+        fields = p.replace("\n", " ").split()
         for f in fields:
             k, v = f.split(":")
             valid_fields += checks[k](v)
