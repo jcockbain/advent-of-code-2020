@@ -31,21 +31,15 @@ def part_two(filename: str) -> int:
 
 
 def check_byr(s):
-    if not s.isdigit() or len(s) != 4:
-        return False
-    return 1920 <= int(s) <= 2002
+    return s.isdigit() and 1920 <= int(s) <= 2002
 
 
 def check_iyr(s):
-    if not s.isdigit() or len(s) != 4:
-        return False
-    return 2010 <= int(s) <= 2020
+    return s.isdigit() and 2010 <= int(s) <= 2020
 
 
 def check_eyr(s):
-    if not s.isdigit() or len(s) != 4:
-        return False
-    return 2020 <= int(s) <= 2030
+    return s.isdigit() and 2020 <= int(s) <= 2030
 
 
 def check_hgt(s):
