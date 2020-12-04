@@ -86,3 +86,7 @@ pytest
 
     - [Python](python/src/day3/main.py)
     - [Go](go/day3/main.go)
+
+- [Day 3 - Passport Processing](https://adventofcode.com/2020/day/4)
+
+    - [Python](python/src/day4/main.py)
