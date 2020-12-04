@@ -10,7 +10,7 @@ def part_one(filename: str) -> int:
         valid_fields = 0
         for f in p.replace("\n", " ").split():
             k, v = f.split(":")
-            valid_fields += k != "cid"
+            valid_fields += k in checks.keys()
         if valid_fields >= 7:
             valid_pports.append(p)
     return len(valid_pports)
@@ -24,7 +24,8 @@ def part_two(filename: str) -> int:
         valid_fields = 0
         for f in p.replace("\n", " ").split():
             k, v = f.split(":")
-            valid_fields += checks[k](v)
+            if k in checks:
+                valid_fields += checks[k](v)
         if valid_fields >= 7:
             valid_pports.append(p)
     return len(valid_pports)
@@ -64,10 +65,6 @@ def check_pid(s):
     return len(s) == 9 and s.isdigit()
 
 
-def check_cid(_):
-    return False
-
-
 checks = {
     "byr": check_byr,
     "iyr": check_iyr,
@@ -76,7 +73,6 @@ checks = {
     "hcl": check_hcl,
     "ecl": check_ecl,
     "pid": check_pid,
-    "cid": check_cid,
 }
 
 if __name__ == '__main__':
