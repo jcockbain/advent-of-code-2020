@@ -5,17 +5,15 @@ import re
 def part_one(filename: str) -> int:
     lines = read_raw(get_path(__file__, filename))
     pports = lines.split("\n\n")
-    valid = []
+    valid_pports = []
     for p in pports:
-        fields = p.replace("\n", " ").split()
         valid_fields = 0
-        for f in fields:
+        for f in p.replace("\n", " ").split():
             k, v = f.split(":")
-            if k != "cid":
-                valid_fields += 1
+            valid_fields += k != "cid"
         if valid_fields >= 7:
-            valid.append(p)
-    return len(valid)
+            valid_pports.append(p)
+    return len(valid_pports)
 
 
 def part_two(filename: str) -> int:
@@ -24,8 +22,7 @@ def part_two(filename: str) -> int:
     valid_pports = []
     for p in pports:
         valid_fields = 0
-        fields = p.replace("\n", " ").split()
-        for f in fields:
+        for f in p.replace("\n", " ").split():
             k, v = f.split(":")
             valid_fields += checks[k](v)
         if valid_fields >= 7:
@@ -83,7 +80,7 @@ def check_pid(s):
     return len(s) == 9 and s.isdigit()
 
 
-def check_cid(s):
+def check_cid(_):
     return False
 
 
