@@ -31,19 +31,19 @@ def part_two(filename: str) -> int:
 
 
 def check_byr(s):
-    if not s.isdigit() and len(s) != 4:
+    if not s.isdigit() or len(s) != 4:
         return False
     return 1920 <= int(s) <= 2002
 
 
 def check_iyr(s):
-    if not s.isdigit() and len(s) != 4:
+    if not s.isdigit() or len(s) != 4:
         return False
     return 2010 <= int(s) <= 2020
 
 
 def check_eyr(s):
-    if not s.isdigit() and len(s) != 4:
+    if not s.isdigit() or len(s) != 4:
         return False
     return 2020 <= int(s) <= 2030
 
@@ -52,24 +52,16 @@ def check_hgt(s):
     r = re.search(r'(\d+)([a-z]{2})', s)
     if not r:
         return False
-    n, u = r.groups()
-    if u == "in":
-        return 59 <= int(n) <= 76
-    if u == "cm":
-        return 150 <= int(n) <= 193
+    val, unit = r.groups()
+    if unit == "in":
+        return 59 <= int(val) <= 76
+    if unit == "cm":
+        return 150 <= int(val) <= 193
     return False
 
 
 def check_hcl(s):
-    if s[0] != "#":
-        return False
-    rest = s[1:]
-    if len(rest) != 6:
-        return False
-    for c in rest:
-        if not c.isdigit() and (ord("a") > ord(c) or ord("f") < ord(c)):
-            return False
-    return True
+    return re.search(r'#[a-f\d]', s) is not None
 
 
 def check_ecl(s):
