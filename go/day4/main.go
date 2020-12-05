@@ -35,9 +35,6 @@ func Part2(filename string) int {
 	passports := createPassports(filename)
 
 	for _, p := range passports {
-		if !p.validatePart1() {
-			continue
-		}
 		if p.validatePart2() {
 			validPassports += 1
 		}
@@ -61,7 +58,6 @@ func createPassports(filename string) []passport {
 		passports = append(passports, p)
 	}
 	return passports
-
 }
 
 type passport map[string]string
@@ -103,21 +99,33 @@ func (p passport) validatePart2() bool {
 }
 
 func (p passport) isValidByr() bool {
+	if p["byr"] == ""{
+		return false
+	}
 	n := toInt(p["byr"])
 	return 1920 <= n && n <= 2002
 }
 
 func (p passport) isValidIyr() bool {
+	if p["iyr"] == ""{
+		return false
+	}
 	n := toInt(p["iyr"])
 	return 2010 <= n && n <= 2020
 }
 
 func (p passport) isValidEyr() bool {
-	n := toInt(string(p["eyr"]))
+	if p["eyr"] == ""{
+		return false
+	}
+	n := toInt(p["eyr"])
 	return 2020 <= n && n <= 2030
 }
 
 func (p passport) isValidHgt() bool {
+	if p["hgt"] == "" {
+		return false
+	}
 	re := regexp.MustCompile(`(\d+)([a-z]+)`)
 	parts := re.FindStringSubmatch(p["hgt"])
 	if len(parts) != 3 {
@@ -134,11 +142,17 @@ func (p passport) isValidHgt() bool {
 }
 
 func (p passport) isValidHcl() bool {
+	if p["hcl"] == ""{
+		return false
+	}
 	re := regexp.MustCompile(`#[a-f\d]{6}`)
 	return re.MatchString(p["hcl"])
 }
 
 func (p passport) isValidEcl() bool {
+	if p["ecl"] == ""{
+		return false
+	}
 	cols := []string{"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}
 	for _, c := range cols {
 		if c == p["ecl"] {
@@ -149,6 +163,9 @@ func (p passport) isValidEcl() bool {
 }
 
 func (p passport) isValidPid() bool {
+	if p["pid"] == ""{
+		return false
+	}
 	re := regexp.MustCompile(`\d{9}`)
 	return re.MatchString(p["pid"])
 }
