@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"io/ioutil"
 )
 
 // ReadLines reads from the filepath and outputs array of lines as strings
@@ -34,6 +35,13 @@ func ReadNumbers(filename string) []int {
 		numbers = append(numbers, toInt(Scanner.Text()))
 	}
 	return numbers
+}
+
+// ReadRaw returns the content of a text file as a string
+func ReadRaw(filename string) string {
+	content, err := ioutil.ReadFile(filename)
+	check(err)
+	return string(content)
 }
 
 func toInt(s string) int {
