@@ -90,3 +90,7 @@ pytest
 - [Day 4 - Passport Processing](https://adventofcode.com/2020/day/4)
 
     - [Python](python/src/day4/main.py)
+
+- [Day 5 - Binary Boarding](https://adventofcode.com/2020/day/5)
+
+    - [Python](python/src/day5/main.py)
