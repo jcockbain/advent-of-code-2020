@@ -3,18 +3,12 @@ from src.common.file_utils import get_path, read_lines
 
 def part_one(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
-    highest_id = 0
-    for line in lines:
-        highest_id = max(highest_id, get_seat_id(line))
-    return highest_id
+    return max([get_seat_id(line) for line in lines])
 
 
 def part_two(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
-    seat_ids = []
-    for line in lines:
-        seat_ids.append(get_seat_id(line))
-    
+    seat_ids = [get_seat_id(line) for line in lines]
     seat_ids.sort()
     missing = seat_ids[0]
     for s in seat_ids:
@@ -23,18 +17,17 @@ def part_two(filename: str) -> int:
 
 
 def get_seat_id(line):
-    rows = line[0:7]
-    cols = line[7:10]
+    rows, cols = line[0:7], line[7:10]
 
-    row, mask = 0, 64 
-    for i in range((len(rows))):
-        if rows[i] == "B":
+    row, mask = 0, 64
+    for r in rows:
+        if r == "B":
             row += mask
         mask >>= 1
 
     col, mask = 0, 4
-    for j in range((len(cols))):
-        if cols[j] == "R":
+    for c in cols:
+        if c == "R":
             col += mask
         mask >>= 1
 

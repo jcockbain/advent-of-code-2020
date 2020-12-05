@@ -13,7 +13,7 @@ class TestDay01(unittest.TestCase):
         self.assertEqual(822, part_one('input.txt'))
 
     def test_part_two(self):
-        self.assertEqual(5, part_two('input.txt'))
+        self.assertEqual(503, part_two('input.txt'))
 
 
 
