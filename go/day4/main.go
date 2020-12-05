@@ -26,7 +26,6 @@ func Part1(filename string) int {
 			validPassports += 1
 		}
 	}
-
 	return validPassports
 }
 
