@@ -42,6 +42,8 @@ func Part2(filename string) int {
 	return validPassports
 }
 
+type passport map[string]string
+
 func createPassports(filename string) []passport {
 	lines := input.ReadRaw(filename)
 	data := strings.Split(lines, "\n\n")
@@ -59,8 +61,6 @@ func createPassports(filename string) []passport {
 	}
 	return passports
 }
-
-type passport map[string]string
 
 func (p passport) validatePart1() bool {
 	requiredFields := []string{"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
@@ -99,7 +99,7 @@ func (p passport) validatePart2() bool {
 }
 
 func (p passport) isValidByr() bool {
-	if p["byr"] == ""{
+	if p["byr"] == "" {
 		return false
 	}
 	n := toInt(p["byr"])
@@ -107,7 +107,7 @@ func (p passport) isValidByr() bool {
 }
 
 func (p passport) isValidIyr() bool {
-	if p["iyr"] == ""{
+	if p["iyr"] == "" {
 		return false
 	}
 	n := toInt(p["iyr"])
@@ -115,7 +115,7 @@ func (p passport) isValidIyr() bool {
 }
 
 func (p passport) isValidEyr() bool {
-	if p["eyr"] == ""{
+	if p["eyr"] == "" {
 		return false
 	}
 	n := toInt(p["eyr"])
@@ -142,7 +142,7 @@ func (p passport) isValidHgt() bool {
 }
 
 func (p passport) isValidHcl() bool {
-	if p["hcl"] == ""{
+	if p["hcl"] == "" {
 		return false
 	}
 	re := regexp.MustCompile(`#[a-f\d]{6}`)
@@ -150,7 +150,7 @@ func (p passport) isValidHcl() bool {
 }
 
 func (p passport) isValidEcl() bool {
-	if p["ecl"] == ""{
+	if p["ecl"] == "" {
 		return false
 	}
 	cols := []string{"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}
@@ -163,7 +163,7 @@ func (p passport) isValidEcl() bool {
 }
 
 func (p passport) isValidPid() bool {
-	if p["pid"] == ""{
+	if p["pid"] == "" {
 		return false
 	}
 	re := regexp.MustCompile(`\d{9}`)
