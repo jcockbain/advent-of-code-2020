@@ -8,8 +8,7 @@ def part_one(filename: str) -> int:
 
 def part_two(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
-    seat_ids = [get_seat_id(line) for line in lines]
-    seat_ids.sort()
+    seat_ids = sorted([get_seat_id(line) for line in lines])
     missing = seat_ids[0]
     for s in seat_ids:
         missing ^= s
@@ -17,16 +16,14 @@ def part_two(filename: str) -> int:
 
 
 def get_seat_id(line):
-    rows, cols = line[0:7], line[7:10]
-
     row, mask = 0, 64
-    for r in rows:
+    for r in line[0:7]:
         if r == "B":
             row += mask
         mask >>= 1
 
     col, mask = 0, 4
-    for c in cols:
+    for c in line[7:10]:
         if c == "R":
             col += mask
         mask >>= 1
