@@ -133,7 +133,7 @@ func (p passport) isValidHgt() bool {
 	}
 	n, units := toInt(parts[1]), parts[2]
 	if units == "in" {
-		return 59 <= n && 76 >= n
+		return 59 <= n && n <= 76
 	}
 	if units == "cm" {
 		return 150 <= n && n <= 193
