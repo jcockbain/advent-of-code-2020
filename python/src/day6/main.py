@@ -3,20 +3,16 @@ from src.common.file_utils import get_path, read_lines, read_raw
 
 def part_one(filename: str) -> int:
     lines = read_raw(get_path(__file__, filename)).split("\n\n")
-    total = 0
-    for line in lines:
-        line = line.replace("\n", "")
-        total += len(list(set(line)))
-    return total
+    return sum([len(list(set(line.replace("\n", "")))) for line in lines])
 
 
 def part_two(filename: str) -> int:
     lines = read_raw(get_path(__file__, filename)).split("\n\n")
     total = 0
     for line in lines:
-        line = line.split("\n")
-        seen = list(set([x for x in line[0]]))
-        for p in line[1:]:
+        split_lines = line.split("\n")
+        seen = list(set([x for x in split_lines[0]]))
+        for p in split_lines[1:]:
             seen = list(set(p) & set(seen))
         total += len(seen)
     return total
