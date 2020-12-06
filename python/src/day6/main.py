@@ -8,14 +8,16 @@ def part_one(filename: str) -> int:
 
 def part_two(filename: str) -> int:
     lines = read_raw(get_path(__file__, filename)).split("\n\n")
-    total = 0
-    for line in lines:
-        split_lines = line.split("\n")
-        seen = list(set([x for x in split_lines[0]]))
-        for p in split_lines[1:]:
-            seen = list(set(p) & set(seen))
-        total += len(seen)
-    return total
+    return sum([common_letters(l) for l in lines])
+
+
+def common_letters(line: str) -> int:
+    split_lines = line.split("\n")
+    seen = list(set([x for x in split_lines[0]]))
+    for p in split_lines[1:]:
+        seen = list(set(p) & set(seen))
+    return len(seen)
+
 
 
 if __name__ == '__main__':
