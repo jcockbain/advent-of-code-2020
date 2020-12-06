@@ -19,7 +19,6 @@ def common_letters(line: str) -> int:
     return len(seen)
 
 
-
 if __name__ == '__main__':
 
     print("---Part One---")
