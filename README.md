@@ -95,6 +95,7 @@ pytest
 - [Day 5 - Binary Boarding](https://adventofcode.com/2020/day/5)
 
     - [Python](python/src/day5/main.py)
+    - [Go](go/src/day5/main.py)
 
 - [Day 6 - Custom Customs](https://adventofcode.com/2020/day/6)
 
