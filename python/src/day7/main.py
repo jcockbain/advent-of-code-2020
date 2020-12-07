@@ -3,71 +3,49 @@ import re
 
 
 def part_one(filename: str) -> int:
-    lines = read_lines(get_path(__file__, filename))
-    bags = {}
-    for line in lines:
-        outer, rest = line.split("contain")
-        outer = outer.strip().rstrip("s")
-
-        if rest == " no other bags.":
-            bags[outer] = []
-
-        else:
-            bags[outer] = []
-            contains = rest.split(",")
-            for c in contains:
-                c = c.strip().replace(".", "")
-                r = re.search(r'(\d+) (\S+.*)', c)
-                if r:
-                    num, i = r.groups()
-                    bags[outer].append(i.rstrip("s"))
+    bags = process_bags(filename)
 
     def check_bags(bag):
         if bag == "shiny gold bag":
             return True
         if bag in bags:
-            return any([check_bags(b) for b in bags[bag]])
+            return any([check_bags(b[1]) for b in bags[bag]])
         return False
 
-    total_gold = 0
-    for b in bags:
-        if check_bags(b):
-            total_gold += 1
-
-    return total_gold - 1
+    # subtract one for original bag (gold on outside)
+    return sum([check_bags(b) for b in bags]) - 1
 
 
 def part_two(filename: str) -> int:
-
-    lines = read_lines(get_path(__file__, filename))
-    bags = {}
-    for line in lines:
-        outer, rest = line.split("contain")
-        outer = outer.strip().rstrip("s")
-
-        if rest == " no other bags.":
-            bags[outer] = []
-
-        else:
-            bags[outer] = []
-            contains = rest.split(",")
-            for c in contains:
-                c = c.strip().replace(".", "")
-                r = re.search(r'(\d+) (\S+.*)', c)
-                if r:
-                    num, i = r.groups()
-                    bags[outer].append((int(num), i.rstrip("s")))
+    bags = process_bags(filename)
 
     def count_bags(bag):
         if bag not in bags or bags[bag] == []:
             return 0
-
         s = 0
         for b in bags[bag]:
             s += b[0] + (b[0] * count_bags(b[1]))
         return s
 
     return count_bags("shiny gold bag")
+
+
+# get a dict of bags to contents (as tuples)
+def process_bags(filename) -> dict:
+    lines = read_lines(get_path(__file__, filename))
+    bags = {}
+    for line in lines:
+        outer, rest = line.split("contain")
+        outer = outer.strip().rstrip("s")
+        bags[outer] = []
+        if rest != " no other bags.":
+            contains = rest.split(",")
+            for c in contains:
+                r = re.search(r'(\d+) (\S+.*)', c.replace(".", ""))
+                if r:
+                    num, i = r.groups()
+                    bags[outer].append((int(num), i.rstrip("s")))
+    return bags
 
 
 if __name__ == '__main__':
