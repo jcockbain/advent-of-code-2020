@@ -8,18 +8,18 @@ def part_one(filename: str) -> int:
     # store previous results to save rechecking paths
     cache = {}
 
-    def check_bags(bag):
+    def gold_bag_inside(bag):
         if bag not in cache:
             can_reach_gold = False
             if bag == "shiny gold bag":
                 can_reach_gold = True
             elif bag in bags:
-                can_reach_gold = any([check_bags(b[1]) for b in bags[bag]])
+                can_reach_gold = any([gold_bag_inside(b[1]) for b in bags[bag]])
             cache[bag] = can_reach_gold
         return cache[bag]
 
     # subtract one for original bag (for gold on outside)
-    return sum([check_bags(b) for b in bags]) - 1
+    return sum([gold_bag_inside(b) for b in bags]) - 1
 
 
 def part_two(filename: str) -> int:
