@@ -46,8 +46,8 @@ def process_bags(filename) -> dict:
         outer_bag = outer_bag.strip().rstrip("s")
         bags[outer_bag] = []
         if inner_bags != " no other bags.":
-            for contents in inner_bags.split(","):
-                r = re.search(r'(\d+) (\S+.*)', contents.replace(".", ""))
+            for bag in inner_bags.split(","):
+                r = re.search(r'(\d+) (\S+.*)', bag.replace(".", ""))
                 if r:
                     num, bag_name = r.groups()
                     bags[outer_bag].append((int(num), bag_name.rstrip("s")))
