@@ -4,7 +4,6 @@ import (
 	input "aoc2020/inpututils"
 
 	"fmt"
-	"strconv"
 	"strings"
 )
 
@@ -32,24 +31,33 @@ func Part2(filename string) int {
 	splitLines := strings.Split(lines, "\n\n")
 	sum := 0
 	for _, line := range splitLines {
-		seen := set{}
-		answers := strings.Split(line, "\n")
-
-		for _, c := range answers[0] {
-			seen.add(int(c))
-		}
-
-		for _, a := range answers[1:] {
-			for key, _ := range seen {
-				if !in(stringToIntArray(a), key) {
-					seen.delete(key)
-				}
-			}
-		}
-		
-		sum += seen.len()
+		strings := strings.Split(line, "\n")
+		sum += countCommonLetters(strings)
 	}
 	return sum
+}
+
+func countDistinctLetters(s string) int {
+	seen := set{}
+	for _, c := range s {
+		seen.add(int(c))
+	}
+	return seen.len()
+}
+
+func countCommonLetters(strings []string) int {
+	seen := set{}
+	for _, c := range strings[0] {
+		seen.add(int(c))
+	}
+	for _, a := range strings[1:] {
+		for key, _ := range seen {
+			if !in(stringToIntArray(a), key) {
+				seen.delete(key)
+			}
+		}
+	}
+	return seen.len()
 }
 
 // create set type as Go doesn't have one
@@ -96,10 +104,3 @@ func in(a []int, e int) bool {
 	return false
 }
 
-func countDistinctLetters(s string) int {
-	seen := set{}
-	for _, c := range s {
-		seen.add(int(c))
-	}
-	return seen.len()
-}
