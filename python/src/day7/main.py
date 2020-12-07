@@ -5,27 +5,34 @@ import re
 def part_one(filename: str) -> int:
     bags = process_bags(filename)
 
-    def check_bags(bag):
-        if bag == "shiny gold bag":
-            return True
-        if bag in bags:
-            return any([check_bags(b[1]) for b in bags[bag]])
-        return False
+    # store previous results to save rechecking paths
+    cache = {}
 
-    # subtract one for original bag (gold on outside)
+    def check_bags(bag):
+        if bag not in cache:
+            can_reach_gold = False
+            if bag == "shiny gold bag":
+                can_reach_gold = True
+            elif bag in bags:
+                can_reach_gold = any([check_bags(b[1]) for b in bags[bag]])
+            cache[bag] = can_reach_gold
+        return cache[bag]
+
+    # subtract one for original bag (for gold on outside)
     return sum([check_bags(b) for b in bags]) - 1
 
 
 def part_two(filename: str) -> int:
     bags = process_bags(filename)
 
+    cache = {}
+
     def count_bags(bag):
         if bag not in bags or bags[bag] == []:
             return 0
-        s = 0
-        for b in bags[bag]:
-            s += b[0] + (b[0] * count_bags(b[1]))
-        return s
+        if bag not in cache:
+            cache[bag] = sum([b[0] + b[0] * count_bags(b[1]) for b in bags[bag]])
+        return cache[bag]
 
     return count_bags("shiny gold bag")
 
