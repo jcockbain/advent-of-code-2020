@@ -100,6 +100,7 @@ pytest
 - [Day 6 - Custom Customs](https://adventofcode.com/2020/day/6)
 
     - [Python](python/src/day6/main.py)
+    - [Go](go/day6/main.go)
 
 - [Day 7 - Handy Haversacks](https://adventofcode.com/2020/day/7)
 

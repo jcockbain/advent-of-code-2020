@@ -72,3 +72,10 @@ func toInt(s string) int {
 	check(err)
 	return i
 }
+
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
