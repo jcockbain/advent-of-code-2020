@@ -42,16 +42,15 @@ def process_bags(filename) -> dict:
     lines = read_lines(get_path(__file__, filename))
     bags = {}
     for line in lines:
-        outer, rest = line.split("contain")
-        outer = outer.strip().rstrip("s")
-        bags[outer] = []
-        if rest != " no other bags.":
-            contains = rest.split(",")
-            for c in contains:
-                r = re.search(r'(\d+) (\S+.*)', c.replace(".", ""))
+        outer_bag, inner_bags = line.split("contain")
+        outer_bag = outer_bag.strip().rstrip("s")
+        bags[outer_bag] = []
+        if inner_bags != " no other bags.":
+            for contents in inner_bags.split(","):
+                r = re.search(r'(\d+) (\S+.*)', contents.replace(".", ""))
                 if r:
-                    num, i = r.groups()
-                    bags[outer].append((int(num), i.rstrip("s")))
+                    num, bag_name = r.groups()
+                    bags[outer_bag].append((int(num), bag_name.rstrip("s")))
     return bags
 
 
