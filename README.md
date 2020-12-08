@@ -105,3 +105,7 @@ pytest
 - [Day 7 - Handy Haversacks](https://adventofcode.com/2020/day/7)
 
     - [Python](python/src/day7/main.py)
+
+- [Day 8 - Handheld Halting](https://adventofcode.com/2020/day/8)
+
+    - [Python](python/src/day8/main.py)
