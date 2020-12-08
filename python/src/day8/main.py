@@ -18,7 +18,7 @@ def part_two(filename: str) -> int:
             if completed:
                 return acc
 
-        if code == "jmp":
+        elif code == "jmp":
             line_copy = lines[:]
             line_copy[i] = "{} {}".format("nop", value)
             completed, acc = run_code(line_copy)
@@ -34,7 +34,6 @@ def run_code(lines) -> (bool, int):
 
     while idx < len(lines) and idx not in visited:
         visited.add(idx)
-
         line = lines[idx]
         code, value = line.split(" ")
 

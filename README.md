@@ -6,8 +6,6 @@ Solutions to the Christmas themed Advent-of-Code challenges.
 
 My aim this year is to do as many as I can in Python, and then in Go. 
 
-For now the repo contains a few things that I hope will save me repeating boring stuff each day.
-
 ## Running the code
 
 How I run the code, works on my machine (until I start trying to solve the problems 🥴).
