@@ -109,3 +109,4 @@ pytest
 - [Day 8 - Handheld Halting](https://adventofcode.com/2020/day/8)
 
     - [Python](python/src/day8/main.py)
+    - [Go](go/day8/main.go)
