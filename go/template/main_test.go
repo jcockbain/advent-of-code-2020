@@ -12,5 +12,5 @@ func TestPart1(t *testing.T) {
 
 func TestPart2(t *testing.T) {
 	got := Part2("input.txt")
-	assert.Equal(t, "input.txt", got)
+	assert.Equal(t, 12, got)
 }

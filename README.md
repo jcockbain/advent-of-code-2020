@@ -113,3 +113,4 @@ pytest
 - [Day 9 - Encoding Error](https://adventofcode.com/2020/day/9)
 
     - [Python](python/src/day9/main.py)
+    - [Go](go/day9/main.go)
