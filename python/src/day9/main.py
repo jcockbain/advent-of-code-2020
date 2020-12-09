@@ -14,16 +14,6 @@ def part_one(filename: str, preamble: int) -> int:
     return -1
 
 
-def part_two(filename: str, preamble: int) -> int:
-    ints = read_integers(get_path(__file__, filename))
-    n = part_one(filename, preamble)
-    for i in range(len(ints)):
-        for j in range(i + 1, len(ints)):
-            if sum(ints[i: j]) == n:
-                return min(ints[i:j]) + max(ints[i:j])
-    return -1
-
-
 def can_sum(target, nums):
     seen = set()
     for n in nums:
@@ -31,6 +21,29 @@ def can_sum(target, nums):
             return True
         seen.add(n)
     return False
+
+
+def part_two(filename: str, preamble: int) -> int:
+    ints = read_integers(get_path(__file__, filename))
+    n = part_one(filename, preamble)
+    return sub_array_sum(n, ints)
+
+
+# O(N) using sliding window
+def sub_array_sum(target, ints):
+    curr_sum = 0
+    start = 0
+
+    for end, val in enumerate(ints):
+        curr_sum += val
+        while curr_sum > target:
+            curr_sum -= ints[start]
+            start += 1
+        if curr_sum == target:
+            return min(ints[start:end+1]) + max(ints[start:end+1])
+
+    return -1
+
 
 if __name__ == '__main__':
 
