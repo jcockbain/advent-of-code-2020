@@ -24,13 +24,13 @@ def part_two(filename: str, preamble: int) -> int:
     return -1
 
 
-def can_sum(n, nums):
-    for i in range(len(nums)):
-        for j in range(i + 1, len(nums)):
-            if nums[i] + nums[j] == n:
-                return True
+def can_sum(target, nums):
+    seen = set()
+    for n in nums:
+        if target - n in seen:
+            return True
+        seen.add(n)
     return False
-
 
 if __name__ == '__main__':
 

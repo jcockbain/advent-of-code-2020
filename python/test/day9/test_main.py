@@ -10,7 +10,7 @@ class TestDay01(unittest.TestCase):
 
     def test_part_two(self):
         self.assertEqual(62, part_two('test1.txt', 5))
-        self.assertEqual(7409241, part_two('input.txt', 5))
+        self.assertEqual(7409241, part_two('input.txt', 25))
 
 
 if __name__ == '__main__':
