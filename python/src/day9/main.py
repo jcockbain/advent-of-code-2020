@@ -29,11 +29,8 @@ def part_two(filename: str, preamble: int) -> int:
     return sub_array_sum(n, ints)
 
 
-# O(N) using sliding window
 def sub_array_sum(target, ints):
-    curr_sum = 0
-    start = 0
-
+    curr_sum, start = 0, 0
     for end, val in enumerate(ints):
         curr_sum += val
         while curr_sum > target:
@@ -41,7 +38,6 @@ def sub_array_sum(target, ints):
             start += 1
         if curr_sum == target:
             return min(ints[start:end+1]) + max(ints[start:end+1])
-
     return -1
 
 
