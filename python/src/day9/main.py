@@ -1,16 +1,11 @@
-from collections import deque
-
 from src.common.file_utils import get_path, read_integers
 
 
 def part_one(filename: str, preamble: int) -> int:
     ints = read_integers(get_path(__file__, filename))
-    queue = deque(ints[:preamble])
-    for i, n in enumerate(ints[preamble:]):
-        if not can_sum(n, queue):
-            return n
-        queue.append(n)
-        queue.popleft()
+    for i in range(preamble, len(ints)):
+        if not can_sum(ints[i], ints[i - preamble: i + 1]):
+            return ints[i]
     return -1
 
 
