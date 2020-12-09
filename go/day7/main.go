@@ -21,18 +21,18 @@ func Part1(filename string) int {
 	lines := input.ReadLines(filename)
 	bags := CreateGraph(lines)
 
-	var goldBagInside func(string)bool
+	var goldBagInside func(string) bool
 
-	goldBagInside = func(startBag string) bool{
+	goldBagInside = func(startBag string) bool {
 		if contents, bagExists := bags[startBag]; !bagExists || len(contents) == 0 {
 			return false
 		}
-		if startBag == "shiny gold bag"{
+		if startBag == "shiny gold bag" {
 			return true
 		}
 		contents := bags[startBag]
 		for _, b := range contents {
-			if goldBagInside(b.name){
+			if goldBagInside(b.name) {
 				return true
 			}
 		}
@@ -40,8 +40,8 @@ func Part1(filename string) int {
 	}
 
 	var s int
-	for bag, _ := range(bags) {
-		if bag != "shiny gold bag" && goldBagInside(bag){
+	for bag, _ := range bags {
+		if bag != "shiny gold bag" && goldBagInside(bag) {
 			s += 1
 		}
 	}
@@ -53,13 +53,13 @@ func Part2(filename string) int {
 	graph := CreateGraph(lines)
 
 	var countBags func(string) int
-	
+
 	countBags = func(bag string) int {
 		if contents, bagExists := graph[bag]; !bagExists || len(contents) == 0 {
 			return 0
 		}
 		contents, s := graph[bag], 0
-		for _, b := range(contents){
+		for _, b := range contents {
 			s += b.num + (b.num * countBags(b.name))
 		}
 		return s
@@ -71,17 +71,13 @@ func CreateGraph(lines []string) map[string][]innerBag {
 	bags := map[string][]innerBag{}
 	for _, line := range lines {
 		splittedString := strings.Split(line, "contain")
-		outerBag, innerBags := splittedString[0], splittedString[1]
-		outerBag = strings.TrimSpace(outerBag)
-		outerBag = strings.TrimRight(outerBag, "s")
+		outerBag, innerBags := trimBag(splittedString[0]), splittedString[1]
 		bags[outerBag] = []innerBag{}
 		if innerBags != "no other bags." {
-			innerBags = strings.TrimRight(innerBags, ".")
 			splitBags := strings.Split(innerBags, ",")
 			for _, bag := range splitBags {
-				bag = strings.TrimRight(bag, "s")
 				re := regexp.MustCompile(`(\d+) (\S+.*)`)
-				parts := re.FindStringSubmatch(bag)
+				parts := re.FindStringSubmatch(trimBag(bag))
 				if len(parts) == 3 {
 					num, bagName := toInt(parts[1]), parts[2]
 					bags[outerBag] = append(bags[outerBag], innerBag{bagName, num})
@@ -90,6 +86,13 @@ func CreateGraph(lines []string) map[string][]innerBag {
 		}
 	}
 	return bags
+}
+
+func trimBag(bag string) string {
+	bag = strings.TrimSpace(bag)
+	bag = strings.TrimRight(bag, ".")
+	bag = strings.TrimRight(bag, "s")
+	return bag
 }
 
 type innerBag struct {
@@ -115,4 +118,4 @@ func check(err error) {
 	if err != nil {
 		panic(err)
 	}
-} 
+}
