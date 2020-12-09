@@ -110,6 +110,6 @@ pytest
     - [Python](python/src/day8/main.py)
     - [Go](go/day8/main.go)
 
-- [Day 8 - Encoding Error](https://adventofcode.com/2020/day/9)
+- [Day 9 - Encoding Error](https://adventofcode.com/2020/day/9)
 
     - [Python](python/src/day9/main.py)
