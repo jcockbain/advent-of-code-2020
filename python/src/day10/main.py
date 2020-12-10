@@ -14,7 +14,8 @@ def part_one(filename: str) -> int:
     return ones * (threes + 1)
 
 
-def part_two(filename: str) -> int:
+# top-down recursion
+def part_two_1(filename: str) -> int:
     ints = read_integers(get_path(__file__, filename))
     ints_set = set(ints)
     cache = [-1] * max(ints)
@@ -33,6 +34,23 @@ def part_two(filename: str) -> int:
     return sum([number_ways(x) for x in range(1, 4)])
 
 
+# bottom-up recursion
+def part_two_2(filename: str) -> int:
+    ints = read_integers(get_path(__file__, filename))
+    ints_set = set(ints)
+    ints.sort()
+    ways = [0] * (max(ints) + 1)
+    
+    for x in [1, 2, 3]:
+        ways[x] = int(x in ints)
+
+    for i in range(2, max(ints) + 1):
+        if i in ints_set:
+            ways[i] += ways[i - 1] + ways[i - 2] + ways[i - 3]
+
+    return ways[-1]
+
+
 if __name__ == '__main__':
 
     print("---Part One---")
@@ -40,5 +58,5 @@ if __name__ == '__main__':
     print(part_one_res)
 
     print("---Part Two---")
-    part_two_res = part_two("input.txt")
+    part_two_res = part_two_1("input.txt")
     print(part_two_res)
