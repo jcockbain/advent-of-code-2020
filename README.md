@@ -114,3 +114,8 @@ pytest
 
     - [Python](python/src/day9/main.py)
     - [Go](go/day9/main.go)
+
+- [Day 10 - Adapter Array](https://adventofcode.com/2020/day/10)
+
+    - [Python](python/src/day10/main.py)
+    - [Go](go/day10/main.go)
