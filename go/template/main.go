@@ -39,3 +39,23 @@ func toInt(s string) int {
 	check(err)
 	return i
 }
+
+func min(a []int) int {
+	m := a[0]
+	for _, v := range a {
+		if v < m {
+			m = v
+		}
+	}
+	return m
+}
+
+func max(a []int) int {
+	m := a[0]
+	for _, v := range a {
+		if v > m {
+			m = v
+		}
+	}
+	return m
+}

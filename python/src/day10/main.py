@@ -40,7 +40,7 @@ def part_two_2(filename: str) -> int:
     ints_set = set(ints)
     ints.sort()
     ways = [0] * (max(ints) + 1)
-    
+
     for x in [1, 2, 3]:
         ways[x] = int(x in ints)
 

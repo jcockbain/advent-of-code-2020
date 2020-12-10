@@ -6,11 +6,9 @@ import (
 )
 
 func TestPart1(t *testing.T) {
-	got := Part1("input.txt")
-	assert.Equal(t, 15, got)
+	assert.Equal(t, 15, Part1("input.txt"))
 }
 
 func TestPart2(t *testing.T) {
-	got := Part2("input.txt")
-	assert.Equal(t, 12, got)
+	assert.Equal(t, 12, Part2("input.txt"))
 }
