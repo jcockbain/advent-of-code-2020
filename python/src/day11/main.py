@@ -7,15 +7,15 @@ def part_one(filename: str) -> int:
                  (-1, 0), (-1, 1), (0, 1), (1, 1)]
     area = [[c for c in line] for line in lines]
     h, w = len(area), len(area[0])
-    
+
     while True:
         new_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-                occupied = 0
 
-                for n in neighbors:
-                    nr, nc = r + n[0], c + n[1]
+                occupied = 0
+                for dr, dc in neighbors:
+                    nr, nc = r + dr, c + dc
                     if 0 <= nr < h and 0 <= nc < w and area[nr][nc] == "#":
                         occupied += 1
 
@@ -27,8 +27,7 @@ def part_one(filename: str) -> int:
 
         if new_area == area:
             return sum([x.count("#") for x in area])
-        else:
-            area = new_area
+        area = new_area
 
     return -1
 
@@ -39,22 +38,20 @@ def part_two(filename: str) -> int:
                  (-1, 0), (-1, 1), (0, 1), (1, 1)]
     area = [[c for c in line] for line in lines]
     h, w = len(area), len(area[0])
-    
+
     while True:
         new_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-                occupied = 0
 
-                for n in neighbors:
-                    nr, nc = r + n[0], c + n[1]
-                    while 0 <= nr < h and 0 <= nc < w:
+                occupied = 0
+                for dr, dc in neighbors:
+                    nr, nc = r + dr, c + dc
+                    while 0 <= nr < h and 0 <= nc < w and area[nr][nc] != "L":
                         if area[nr][nc] == "#":
                             occupied += 1
                             break
-                        elif area[nr][nc] == "L":
-                            break
-                        nr, nc = nr + n[0], nc + n[1]
+                        nr, nc = nr + dr, nc + dc
 
                 if area[r][c] == "L" and occupied == 0:
                     new_area[r][c] = "#"
@@ -64,8 +61,7 @@ def part_two(filename: str) -> int:
 
         if new_area == area:
             return sum([x.count("#") for x in area])
-        else:
-            area = new_area
+        area = new_area
 
     return -1
 
