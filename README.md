@@ -119,3 +119,7 @@ pytest
 
     - [Python](python/src/day10/main.py)
     - [Go](go/day10/main.go)
+
+- [Day 11 - Seating System](https://adventofcode.com/2020/day/11)
+
+    - [Python](python/src/day11/main.py)
