@@ -5,6 +5,7 @@ NEIGHBOURS = [(1, 0), (1, -1), (0, -1), (-1, -1),
 
 EMPTY_SEAT = "L"
 FILLED_SEAT = "#"
+PATH = "."
 
 
 def part_one(filename: str) -> int:
@@ -16,17 +17,16 @@ def part_one(filename: str) -> int:
         new_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-                occupied = 0
-                
-                for dr, dc in NEIGHBOURS:
-                    nr, nc = r + dr, c + dc
-                    if 0 <= nr < h and 0 <= nc < w and area[nr][nc] == FILLED_SEAT:
-                        occupied += 1
-
-                if area[r][c] == EMPTY_SEAT and occupied == 0:
-                    new_area[r][c] = FILLED_SEAT
-                elif area[r][c] == FILLED_SEAT and occupied >= 4:
-                    new_area[r][c] = EMPTY_SEAT
+                if area[r][c] != PATH:
+                    occupied = 0
+                    for dr, dc in NEIGHBOURS:
+                        nr, nc = r + dr, c + dc
+                        if 0 <= nr < h and 0 <= nc < w and area[nr][nc] == FILLED_SEAT:
+                            occupied += 1
+                    if occupied == 0:
+                        new_area[r][c] = FILLED_SEAT
+                    elif occupied >= 4:
+                        new_area[r][c] = EMPTY_SEAT
 
         if new_area == area:
             return sum([x.count(FILLED_SEAT) for x in area])
@@ -44,21 +44,22 @@ def part_two(filename: str) -> int:
         new_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-                occupied = 0
-                
-                for dr, dc in NEIGHBOURS:
-                    nr, nc = r + dr, c + dc
-                    # keep moving in same direction till empty or filled seat
-                    while 0 <= nr < h and 0 <= nc < w and area[nr][nc] != EMPTY_SEAT:
-                        if area[nr][nc] == FILLED_SEAT:
-                            occupied += 1
-                            break
-                        nr, nc = nr + dr, nc + dc
+                if area[r][c] != PATH:
 
-                if area[r][c] == EMPTY_SEAT and occupied == 0:
-                    new_area[r][c] = FILLED_SEAT
-                elif area[r][c] == FILLED_SEAT and occupied >= 5:
-                    new_area[r][c] = EMPTY_SEAT
+                    occupied = 0
+                    for dr, dc in NEIGHBOURS:
+                        nr, nc = r + dr, c + dc
+                        # keep moving in same direction till empty or filled seat
+                        while 0 <= nr < h and 0 <= nc < w and area[nr][nc] != EMPTY_SEAT:
+                            if area[nr][nc] == FILLED_SEAT:
+                                occupied += 1
+                                break
+                            nr, nc = nr + dr, nc + dc
+
+                    if occupied == 0:
+                        new_area[r][c] = FILLED_SEAT
+                    elif occupied >= 5:
+                        new_area[r][c] = EMPTY_SEAT
 
         if new_area == area:
             return sum([x.count(FILLED_SEAT) for x in area])
