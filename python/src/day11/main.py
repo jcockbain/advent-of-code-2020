@@ -43,7 +43,7 @@ def part_two(filename: str) -> int:
         old_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-                if area[r][c] != PATH:
+                if old_area[r][c] != PATH:
                     
                     occupied = 0
                     for dr, dc in NEIGHBOURS:
