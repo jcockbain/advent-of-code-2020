@@ -16,8 +16,8 @@ def part_one(filename: str) -> int:
         new_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-
                 occupied = 0
+                
                 for dr, dc in NEIGHBOURS:
                     nr, nc = r + dr, c + dc
                     if 0 <= nr < h and 0 <= nc < w and area[nr][nc] == FILLED_SEAT:
@@ -25,7 +25,6 @@ def part_one(filename: str) -> int:
 
                 if area[r][c] == EMPTY_SEAT and occupied == 0:
                     new_area[r][c] = FILLED_SEAT
-
                 elif area[r][c] == FILLED_SEAT and occupied >= 4:
                     new_area[r][c] = EMPTY_SEAT
 
@@ -45,8 +44,8 @@ def part_two(filename: str) -> int:
         new_area = [[area[r][c] for c in range(w)] for r in range(h)]
         for r in range(h):
             for c in range(w):
-
                 occupied = 0
+                
                 for dr, dc in NEIGHBOURS:
                     nr, nc = r + dr, c + dc
                     # keep moving in same direction till empty or filled seat
@@ -58,7 +57,6 @@ def part_two(filename: str) -> int:
 
                 if area[r][c] == EMPTY_SEAT and occupied == 0:
                     new_area[r][c] = FILLED_SEAT
-
                 elif area[r][c] == FILLED_SEAT and occupied >= 5:
                     new_area[r][c] = EMPTY_SEAT
 
