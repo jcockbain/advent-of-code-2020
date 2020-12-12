@@ -68,20 +68,11 @@ def part_two(filename: str) -> int:
 
 def rotate_coords(wx, wy, v):
     if v == 90:
-        x = wx
-        wx = wy
-        wy = -x
-
-    if v == 180:
-        x = wx
-        wx = -wx
-        wy = -wy
-
+        return wy, -wx
+    elif v == 180:
+        return -wx, -wy
     if v == 270:
-        x = wx
-        wx = -wy
-        wy = x
-
+        return -wy, wx
     return wx, wy
 
 
