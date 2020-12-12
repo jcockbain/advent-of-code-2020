@@ -123,3 +123,7 @@ pytest
 - [Day 11 - Seating System](https://adventofcode.com/2020/day/11)
 
     - [Python](python/src/day11/main.py)
+
+- [Day 12 - Rain Risk](https://adventofcode.com/2020/day/12)
+
+    - [Python](python/src/day12/main.py)
