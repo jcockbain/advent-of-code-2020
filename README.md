@@ -127,3 +127,4 @@ pytest
 - [Day 12 - Rain Risk](https://adventofcode.com/2020/day/12)
 
     - [Python](python/src/day12/main.py)
+    - [Go](go/day12/main.go)
