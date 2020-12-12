@@ -73,7 +73,6 @@ func Part2(filename string) int {
 			wx, wy = rotateCoords(wx, wy, v)
 		}
 		if d == "L" {
-			// add 360 to stop becoming negative
 			wx, wy = rotateCoords(wx, wy, 360-v)
 		}
 		if d == "N" {
