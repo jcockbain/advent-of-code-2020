@@ -1,5 +1,7 @@
 # 🎄 advent-of-code-2020 🎄
 
+![Go Solutions](https://github.com/jcockbain/advent-of-code-2020/workflows/Go/badge.svg)
+
 ## Summary
 
 Solutions to the Christmas themed Advent-of-Code challenges. 
