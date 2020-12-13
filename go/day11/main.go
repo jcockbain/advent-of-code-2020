@@ -29,10 +29,6 @@ type floor struct {
 	height, width int
 }
 
-func newTiles() tiles {
-	return tiles{}
-}
-
 func main() {
 	fmt.Println("--- Part One ---")
 	fmt.Println(Part1("test1.txt"))
