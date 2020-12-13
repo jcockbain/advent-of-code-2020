@@ -25,7 +25,7 @@ func TestPart2(t *testing.T) {
 		},
 		{
 			"input.txt",
-			123,
+			124,
 		},
 	}
 	for _, tt := range tests {
