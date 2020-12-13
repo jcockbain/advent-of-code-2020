@@ -4,27 +4,23 @@ from src.common.file_utils import get_path, read_lines
 def part_one(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
     earliest = int(lines[0])
-    bus_ids = []
-    for i in lines[1].split(","):
-        if i != "x":
-            bus_ids.append(int(i))
-
     shortest_wait, bus_id = float('inf'), None
 
-    for b in bus_ids:
+    for b in lines[1].split(","):
+        if b == "x":
+            continue
+        b = int(b)
         wait = (((earliest // b) * b) + b) - earliest
         if wait < shortest_wait:
-            shortest_wait = wait
-            bus_id = b
+            shortest_wait, bus_id = wait, b
 
     return shortest_wait * bus_id if shortest_wait else -1
 
 
 def part_two(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
-
     running_product, earliest_bus = 1, 0
-    
+
     # uses chinese remainder theorem
     for (index, bus) in enumerate(lines[1].split(",")):
         if bus == "x":
