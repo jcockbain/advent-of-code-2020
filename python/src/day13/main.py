@@ -30,6 +30,7 @@ def part_two(filename: str) -> int:
         while ((earliest_bus + index) % bus_id) != 0:
             earliest_bus += running_product
         running_product *= bus_id
+    
     return earliest_bus
 
 
