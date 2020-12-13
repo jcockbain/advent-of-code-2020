@@ -6,10 +6,7 @@ def part_one(filename: str) -> int:
     earliest = int(lines[0])
     shortest_wait, bus_id = float('inf'), None
 
-    for b in lines[1].split(","):
-        if b == "x":
-            continue
-        b = int(b)
+    for b in [int(x) for x in lines[1].split(',') if x.isnumeric()]:
         wait = (((earliest // b) * b) + b) - earliest
         if wait < shortest_wait:
             shortest_wait, bus_id = wait, b
@@ -30,7 +27,7 @@ def part_two(filename: str) -> int:
         while ((earliest_bus + index) % bus_id) != 0:
             earliest_bus += running_product
         running_product *= bus_id
-    
+
     return earliest_bus
 
 

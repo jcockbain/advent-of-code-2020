@@ -16,6 +16,5 @@ class TestDay01(unittest.TestCase):
         self.assertEqual(626670513163231, part_two('input.txt'))
 
 
-
 if __name__ == '__main__':
     unittest.main()
