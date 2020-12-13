@@ -128,3 +128,7 @@ pytest
 
     - [Python](python/src/day12/main.py)
     - [Go](go/day12/main.go)
+
+- [Day 13 - Shuttle Search](https://adventofcode.com/2020/day/13)
+
+    - [Python](python/src/day13/main.py)
