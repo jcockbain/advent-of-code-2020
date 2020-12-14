@@ -37,27 +37,24 @@ def part_two(filename: str) -> int:
             mask = val.strip()
         else:
             address = int(re.search(r'mem\[(\d+)]', key).groups()[0])
-            n = list('{:036b}'.format(address))
+            address_base = list('{:036b}'.format(address))
             floating = 0
-            
-            # replace with 1's, mark x's
+            # replace with 1's, mark x's with {} for formatting
             for i in range(BITS):
                 if mask[i] == "X":
+                    address_base[i] = "{}"
                     floating += 1
-                    n[i] = "{}"
                 elif mask[i] == "1":
-                    n[i] = "1"
-            n = "".join(n)
-            
+                    address_base[i] = "1"
+            format_address = "".join(address_base)
             if floating > 0:
                 bin_format = "0{}b".format(floating)
                 # insert each binary number up to 2**floating into positions of X's
                 for i in range(2 ** floating):
-                    replace_bin = format(i, bin_format)
-                    mem_address = n.format(*replace_bin)
+                    mem_address = format_address.format(*format(i, bin_format))
                     memory[int(mem_address, 2)] = int(val)
             else:
-                memory[int("".join(n), 2)] = int(val)
+                memory[int("".join(format_address), 2)] = int(val)
 
     return sum(memory.values())
 
