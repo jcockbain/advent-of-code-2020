@@ -11,19 +11,17 @@ def part_one(filename: str) -> int:
     for line in lines:
         splitted = line.split("=")
         key, val = splitted[0].strip(), splitted[1].strip()
-
+        
         if key == "mask":
             mask = val
         else:
             address = int(re.search(r'mem\[(\d+)]', key).groups()[0])
             val = list('{:036b}'.format(int(val)))
-
             for idx, c in enumerate(mask):
                 if c != "X" and c != val[idx]:
                     val[idx] = c
-
             memory[address] = int("".join(val), 2)
-
+    
     return sum(memory.values())
 
 
@@ -34,7 +32,7 @@ def part_two(filename: str) -> int:
     for line in lines:
         splitted = line.split("=")
         key, val = splitted[0].strip(), splitted[1].strip()
-
+       
         if key == "mask":
             mask = val.strip()
         else:
@@ -49,8 +47,8 @@ def part_two(filename: str) -> int:
                     n[i] = "{}"
                 elif mask[i] == "1":
                     n[i] = "1"
-
             n = "".join(n)
+            
             if floating > 0:
                 bin_format = "0{}b".format(floating)
                 # insert each binary number up to 2**floating into positions of X's
@@ -58,7 +56,6 @@ def part_two(filename: str) -> int:
                     replace_bin = format(i, bin_format)
                     mem_address = n.format(*replace_bin)
                     memory[int(mem_address, 2)] = int(val)
-
             else:
                 memory[int("".join(n), 2)] = int(val)
 
