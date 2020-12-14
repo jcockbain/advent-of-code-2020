@@ -11,7 +11,7 @@ def part_one(filename: str) -> int:
     for line in lines:
         splitted = line.split("=")
         key, val = splitted[0].strip(), splitted[1].strip()
-        
+
         if key == "mask":
             mask = val
         else:
@@ -21,20 +21,20 @@ def part_one(filename: str) -> int:
                 if c != "X" and c != val[idx]:
                     val[idx] = c
             memory[address] = int("".join(val), 2)
-    
+
     return sum(memory.values())
 
 
 def part_two(filename: str) -> int:
     lines = read_lines(get_path(__file__, filename))
     memory = {}
-    
+
     for line in lines:
         splitted = line.split("=")
         key, val = splitted[0].strip(), splitted[1].strip()
-       
+
         if key == "mask":
-            mask = val.strip()
+            mask = val
         else:
             address = int(re.search(r'mem\[(\d+)]', key).groups()[0])
             address_base = list('{:036b}'.format(address))
