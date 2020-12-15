@@ -11,7 +11,7 @@ def part_two(nums: list) -> int:
 
 def play_game(nums: list, turns: int) -> int:
     history = {}
-    last_number, spoken = None, None
+    last_number, spoken = 0, 0
 
     for i in range(turns):
         if i < len(nums):
@@ -27,6 +27,14 @@ def play_game(nums: list, turns: int) -> int:
 
     return last_number
 
+def van_eck():
+    n, seen, val = 0, {}, 0
+    while True:
+        yield val
+        last = {val: n}
+        val = n - seen.get(val, n)
+        seen.update(last)
+        n += 1
 
 if __name__ == '__main__':
 
