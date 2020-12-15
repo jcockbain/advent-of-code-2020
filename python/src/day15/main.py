@@ -27,14 +27,6 @@ def play_game(nums: list, turns: int) -> int:
 
     return last_number
 
-def van_eck():
-    n, seen, val = 0, {}, 0
-    while True:
-        yield val
-        last = {val: n}
-        val = n - seen.get(val, n)
-        seen.update(last)
-        n += 1
 
 if __name__ == '__main__':
 
