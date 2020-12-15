@@ -141,6 +141,6 @@ pytest
 
     - [Python](python/src/day14/main.py)
 
-- [Day 14 - Rambunctious Recitation](https://adventofcode.com/2020/day/15)
+- [Day 15 - Rambunctious Recitation](https://adventofcode.com/2020/day/15)
 
     - [Python](python/src/day15/main.py)
