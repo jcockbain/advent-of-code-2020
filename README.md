@@ -140,6 +140,7 @@ pytest
 - [Day 14 - Docking Data](https://adventofcode.com/2020/day/14)
 
     - [Python](python/src/day14/main.py)
+    - [Go](go/day14/main.go)
 
 - [Day 15 - Rambunctious Recitation](https://adventofcode.com/2020/day/15)
 

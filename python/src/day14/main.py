@@ -18,8 +18,7 @@ def part_one(filename: str) -> int:
             address = int(re.search(r'mem\[(\d+)]', key).groups()[0])
             val = list('{:036b}'.format(int(val)))
             for idx, c in enumerate(mask):
-                if c != "X" and c != val[idx]:
-                    val[idx] = c
+                val[idx] = c if c != "X" else val[idx]
             memory[address] = int("".join(val), 2)
 
     return sum(memory.values())
