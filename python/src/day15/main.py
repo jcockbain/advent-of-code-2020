@@ -11,21 +11,17 @@ def part_two(nums: list) -> int:
 
 def play_game(nums: list, turns: int) -> int:
     history = {}
-    last_number, spoken = 0, 0
+    a = [0] * turns
 
-    for i in range(turns):
+    for i in range(turns - 1):
         if i < len(nums):
-            spoken = nums[i]
+            a[i] = nums[i]
         else:
-            if last_number not in history:
-                spoken = 0
-            else:
-                spoken = i - 1 - history[last_number]
+            if a[i] in history:
+                a[i + 1] = i - history[a[i]]
+        history[a[i]] = i
 
-        history[last_number] = i - 1
-        last_number = spoken
-
-    return last_number
+    return a[-1]
 
 
 if __name__ == '__main__':
