@@ -144,3 +144,4 @@ pytest
 - [Day 15 - Rambunctious Recitation](https://adventofcode.com/2020/day/15)
 
     - [Python](python/src/day15/main.py)
+    - [Go](go/day15/main.go)
