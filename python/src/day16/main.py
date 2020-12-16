@@ -42,10 +42,9 @@ class TicketReader():
         for ticket in self.nearby_tickets:
             for f in ticket:
                 valid_field = False
-                for _, rule in self.fields.items():
-                    for (lower, upper) in rule:
-                        if (lower <= f and f <= upper):
-                            valid_field = True
+                for rule in self.fields:
+                    if self.is_valid(rule, f):
+                        valid_field = True
                 if not valid_field:
                     error += f
         return error
@@ -56,10 +55,9 @@ class TicketReader():
             valid_ticket = True
             for f in ticket:
                 valid_field = False
-                for name, rule in self.fields.items():
-                    for (lower, upper) in rule:
-                        if (lower <= f and f <= upper):
-                            valid_field = True
+                for rule in self.fields:
+                    if self.is_valid(rule, f):
+                        valid_field = True
                 if not valid_field:
                     valid_ticket = False
             if valid_ticket:
