@@ -146,3 +146,7 @@ pytest
 
     - [Python](python/src/day15/main.py)
     - [Go](go/day15/main.go)
+
+- [Day 16 - Ticket Translation](https://adventofcode.com/2020/day/16)
+
+   - [Python](python/src/day16/main.py)
