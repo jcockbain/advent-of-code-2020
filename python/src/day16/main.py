@@ -32,8 +32,7 @@ class TicketReader():
             name, boundaries = rule.split(": ")
             rules[name] = []
             for val in boundaries.split("or"):
-                val = val.strip()
-                splitted = val.split("-")
+                splitted = val.strip().split("-")
                 rules[name].append((int(splitted[0]), int(splitted[1])))
 
         return your_tickets[0], nearby_tickets, rules
@@ -88,25 +87,21 @@ def part_two(filename: str) -> int:
     for ticket in tickets:
         for pos, v in enumerate(ticket):
             for rule in possible_positions:
-                if pos in possible_positions[rule]:
-                    if not ticket_reader.is_valid(rule, v):
-                        possible_positions[rule].remove(pos)
+                if pos in possible_positions[rule] and not ticket_reader.is_valid(rule, v):
+                    possible_positions[rule].remove(pos)
 
     mapping = {}
     while len(possible_positions) > 0:
-        pos_taken, remove = None, ""
+        pos_taken = None
         for rule, positions in possible_positions.items():
             if len(positions) == 1:
                 v = list(positions)[0]
-                mapping[rule] = v
-                pos_taken = v
-                remove = rule
+                mapping[rule] = pos_taken = v
+                del possible_positions[rule]
                 break
 
         for rule, positions in possible_positions.items():
             positions.remove(pos_taken)
-
-        del possible_positions[remove]
 
     total = 1
     for rule, val in mapping.items():
