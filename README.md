@@ -150,3 +150,7 @@ pytest
 - [Day 16 - Ticket Translation](https://adventofcode.com/2020/day/16)
 
    - [Python](python/src/day16/main.py)
+
+- [Day 17 - Conway Cubes](https://adventofcode.com/2020/day/17)
+
+   - [Python](python/src/day17/main.py)
