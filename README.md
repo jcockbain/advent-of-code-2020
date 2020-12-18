@@ -154,3 +154,7 @@ pytest
 - [Day 17 - Conway Cubes](https://adventofcode.com/2020/day/17)
 
    - [Python](python/src/day17/main.py)
+
+- [Day 18 - Operation Order](https://adventofcode.com/2020/day/18)
+
+   - [Python](python/src/day18/main.py)

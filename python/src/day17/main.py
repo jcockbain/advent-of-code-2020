@@ -8,8 +8,9 @@ DEAD = "."
 
 
 class Board():
-    def __init__(self, input_board):
+    def __init__(self, input_board, dimensions):
         self.cells = self.init_cells(input_board)
+        self.dimensions = dimensions
 
     def init_cells(self, board):
         cells = {}
@@ -74,15 +75,16 @@ class Board():
         return alive
 
 
-def get_neighbours_array(loc):
-    n = []
-    x, y, z = loc
-    for dz in [-1, 0, 1]:
-        for dy in [-1, 0, 1]:
-            for dx in [-1, 0, 1]:
-                if [dx, dy, dz] != [0, 0, 0]:
-                    n.append((x + dx, y + dy, z + dz))
-    return n
+    def get_neighbours_array(loc):
+        n = []
+        x, y, z = loc
+        for dim
+        for dz in [-1, 0, 1]:
+            for dy in [-1, 0, 1]:
+                for dx in [-1, 0, 1]:
+                    if [dx, dy, dz] != [0, 0, 0]:
+                        n.append((x + dx, y + dy, z + dz))
+        return n
 
 # TODO: Remove big duplication between 1 and 2
 
