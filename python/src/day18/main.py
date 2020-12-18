@@ -13,34 +13,35 @@ def part_two(filename: str) -> int:
 
 def evaluate(exp, evaluate_exp_func):
     exp = [c for c in exp.replace(" ", "")]
-    i, start = 0, None
+    i, last_open = 0, None
 
     while i < len(exp):
         if exp[i] == "(":
-            start = i
+            last_open = i
 
         elif exp[i] == ")":
-            exp = exp[:start] + [evaluate_exp_func(exp[start+1:i])] + exp[i+1:]
-            i, start = 0, None
+            exp = exp[:last_open] + \
+                [evaluate_exp_func(exp[last_open+1:i])] + exp[i+1:]
+            i, last_open = 0, None
             continue
+        
         i += 1
-
+    
     return evaluate_exp_func(exp)
 
 
 def evaluate_exp1(exp):
-    n = 0
-    current_op = "+"
+    res, current_op = 0, "+"
     for i in range(len(exp)):
-        
         c = str(exp[i])
+
         if c in ["+", "*"]:
             current_op = c
 
         elif c.isdigit():
-            n = operate(current_op)(n, int(c))
+            res = operate(current_op)(res, int(c))
 
-    return n
+    return res
 
 
 def evaluate_exp2(exp):
