@@ -158,3 +158,7 @@ pytest
 - [Day 18 - Operation Order](https://adventofcode.com/2020/day/18)
 
    - [Python](python/src/day18/main.py)
+
+- [Day 21 - Allergen Assessment](https://adventofcode.com/2020/day/21)
+
+   - [Python](python/src/day21/main.py)
