@@ -1,6 +1,5 @@
 from src.common.file_utils import get_path, read_raw
 import itertools
-import copy
 from functools import reduce
 
 
@@ -44,41 +43,17 @@ def flip_array(matrix):
     return out
 
 
-def get_col(x, arr):
-    res = [0] * len(arr)
-    for i, c in enumerate(arr):
-        res[i] = c[x]
-    return res
-
-
 def matches_tile_behind(tile1, tile2, axis):
     if axis == 1:
         return tile1[0] == tile2[-1]
     return get_col(0, tile1) == get_col(len(tile2) - 1, tile2)
 
-def print_rows(tiles, width):
-    if len(tiles) == 0:
-        return
 
-    print("<------------->")
-   
-    tile_strings = []
-    for t in tiles:
-        tile_string = []
-        for row in t.vals:
-            tile_string.append("".join(row))
-        tile_strings.append(tile_string)
-
-    for row in range((len(tiles) // width) + 1):
-        for tile_row_idx in range(len(tiles[0].vals)):
-            row_s = ""
-            for tile in range(width):
-                if (row * width) + tile < len(tiles):
-                    row_s += tile_strings[(row * width) +
-                                          tile][tile_row_idx] + " "
-            if row_s != "":
-                print(row_s)
-        print("\n")
+def get_col(x, arr):
+    res = [0] * len(arr)
+    for i, c in enumerate(arr):
+        res[i] = c[x]
+    return res
 
 
 def multiply(l):
@@ -137,6 +112,7 @@ def check_all_tiles(tiles):
 
     return get_sum_corners() if found_solution else None
 
+
 def part_one(filename: str) -> int:
     tiles = parse_input(filename)
     return check_all_tiles(tiles)
@@ -158,6 +134,31 @@ def parse_input(filename: str) -> dict:
 
 def part_two(filename: str) -> int:
     return None
+
+
+def print_rows(tiles, width):
+    if len(tiles) == 0:
+        return
+
+    print("<------------->")
+
+    tile_strings = []
+    for t in tiles:
+        tile_string = []
+        for row in t.vals:
+            tile_string.append("".join(row))
+        tile_strings.append(tile_string)
+
+    for row in range((len(tiles) // width) + 1):
+        for tile_row_idx in range(len(tiles[0].vals)):
+            row_s = ""
+            for tile in range(width):
+                if (row * width) + tile < len(tiles):
+                    row_s += tile_strings[(row * width) +
+                                          tile][tile_row_idx] + " "
+            if row_s != "":
+                print(row_s)
+        print("\n")
 
 
 def path(filename: str):
