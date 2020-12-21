@@ -12,16 +12,15 @@ class TestDay01(unittest.TestCase):
         self.assertEqual(5, board.count_neighbours((1, 1, 0)))
         self.assertEqual(1, board.count_neighbours((0, 0, 0)))
         self.assertEqual(2, board.count_neighbours((2, 2, 0)))
-        board.cycle()        
+        board.cycle()
         self.assertEqual(11, board.count_alive())
 
-    
     def test_part_one(self):
         self.assertEqual(112, part_one('test1.txt'))
         self.assertEqual(255, part_one('input.txt'))
 
     def test_part_two(self):
-        self.assertEqual(846, part_two('test1.txt'))
+        self.assertEqual(848, part_two('test1.txt'))
         self.assertEqual(2340, part_two('input.txt'))
 
 

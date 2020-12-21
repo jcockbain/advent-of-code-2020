@@ -8,9 +8,8 @@ DEAD = "."
 
 
 class Board():
-    def __init__(self, input_board, dimensions):
+    def __init__(self, input_board):
         self.cells = self.init_cells(input_board)
-        self.dimensions = dimensions
 
     def init_cells(self, board):
         cells = {}
@@ -46,7 +45,7 @@ class Board():
         new_neighbours = defaultdict(int)
         for cell, val in self.cells.items():
             if val is ALIVE:
-                neighbours = get_neighbours_array(cell)
+                neighbours = get_neighbours_array_1(cell)
                 for n in neighbours:
                     new_neighbours[n] += 1
 
@@ -62,7 +61,7 @@ class Board():
 
     def count_neighbours(self, loc):
         n = 0
-        for neighbour in get_neighbours_array(loc):
+        for neighbour in get_neighbours_array_1(loc):
             if self.cells.get(neighbour, DEAD) == ALIVE:
                 n += 1
         return n
@@ -74,17 +73,15 @@ class Board():
                 alive += 1
         return alive
 
-
-    def get_neighbours_array(loc):
-        n = []
-        x, y, z = loc
-        for dim
-        for dz in [-1, 0, 1]:
-            for dy in [-1, 0, 1]:
-                for dx in [-1, 0, 1]:
-                    if [dx, dy, dz] != [0, 0, 0]:
-                        n.append((x + dx, y + dy, z + dz))
-        return n
+def get_neighbours_array_1(loc):
+    n = []
+    x, y, z = loc
+    for dz in [-1, 0, 1]:
+        for dy in [-1, 0, 1]:
+            for dx in [-1, 0, 1]:
+                if [dx, dy, dz] != [0, 0, 0]:
+                    n.append((x + dx, y + dy, z + dz))
+    return n
 
 # TODO: Remove big duplication between 1 and 2
 

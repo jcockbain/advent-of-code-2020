@@ -159,6 +159,14 @@ pytest
 
    - [Python](python/src/day18/main.py)
 
+- [Day 19 - Monster Messages](https://adventofcode.com/2020/day/19)
+
+    - [Python](python/src/day19/main.py)
+
+- [Day 20 - Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
+
+   - [Python](python/src/day20/main.py) (slow part 1 only!)
+
 - [Day 21 - Allergen Assessment](https://adventofcode.com/2020/day/21)
 
    - [Python](python/src/day21/main.py)
