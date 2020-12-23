@@ -22,18 +22,7 @@ def calc_one(n, moves):
     highest = max(ordering)
     lowest = min(ordering)
 
-    head = Node(ordering[0])
-    node = head
-
-    d = {}
-    for v in ordering[1:]:
-        new_node = Node(v)
-        node.next = new_node
-        d[node.val] = node
-        node = new_node
-
-    node.next = head
-    d[node.val] = node
+    head, d = create_ll(ordering)
 
     for _ in range(moves):
         head = move(d, head, lowest, highest)
@@ -55,6 +44,15 @@ def calc_two(n, moves):
         ordering.append(i)
     highest = 1000000
 
+    head, d = create_ll(ordering)
+
+    for _ in range(moves):
+        head = move(d, head, lowest, highest)
+
+    return d[1].next.val * d[1].next.next.val
+
+
+def create_ll(ordering):
     head = Node(ordering[0])
     node = head
 
@@ -67,12 +65,7 @@ def calc_two(n, moves):
 
     node.next = head
     d[node.val] = node
-
-    for _ in range(moves):
-        head = move(d, head, lowest, highest)
-
-    one_node = d[1]
-    return one_node.next.val * one_node.next.next.val
+    return head, d
 
 
 def move(d, current, lowest, highest):
