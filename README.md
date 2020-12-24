@@ -179,6 +179,6 @@ pytest
 
    - [Python](python/src/day23/main.py)
 
-- [Day 23 - Lobby Layout](https://adventofcode.com/2020/day/24)
+- [Day 24 - Lobby Layout](https://adventofcode.com/2020/day/24)
 
    - [Python](python/src/day24/main.py)
