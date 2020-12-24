@@ -178,3 +178,7 @@ pytest
 - [Day 23 - Crab Cups](https://adventofcode.com/2020/day/23)
 
    - [Python](python/src/day23/main.py)
+
+- [Day 23 - Lobby Layout](https://adventofcode.com/2020/day/24)
+
+   - [Python](python/src/day24/main.py)

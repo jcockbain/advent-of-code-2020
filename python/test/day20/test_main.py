@@ -9,8 +9,8 @@ class TestDay01(unittest.TestCase):
         self.assertEqual(20899048083289, part_one('test1.txt'))
         # self.assertEqual(12519494280967, part_one('input.txt'))
 
-    # def test_part_two(self):
-    #     self.assertEqual(5, part_two('input.txt'))
+    def test_part_two(self):
+        self.assertEqual(273, part_two('test1.txt'))
 
 
 if __name__ == '__main__':
