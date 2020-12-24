@@ -165,7 +165,7 @@ pytest
 
 - [Day 20 - Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
 
-   - [Python](python/src/day20/main.py) (slow part 1 only!)
+   - [Python](python/src/day20/main.py)
 
 - [Day 21 - Allergen Assessment](https://adventofcode.com/2020/day/21)
 
