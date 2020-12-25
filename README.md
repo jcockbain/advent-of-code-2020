@@ -159,6 +159,7 @@ pytest
 
    - [Python](python/src/day18/main.py)
 
+
 - [Day 19 - Monster Messages](https://adventofcode.com/2020/day/19)
 
     - [Python](python/src/day19/main.py)
@@ -182,3 +183,7 @@ pytest
 - [Day 24 - Lobby Layout](https://adventofcode.com/2020/day/24)
 
    - [Python](python/src/day24/main.py)
+
+- [Day 25 - Combo Breaker](https://adventofcode.com/2020/day/25)
+
+   - [Python](python/src/day25/main.py)
