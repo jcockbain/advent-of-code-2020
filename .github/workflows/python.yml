@@ -38,7 +38,7 @@ jobs:
     - name: Add modules to path
       run: | 
         pwd
-        export PYTHONPATH=$HOME/work/advent-of-code-2020/python:$PYTHONPATH
+        export PYTHONPATH=$HOME/work/advent-of-code-2020/advent-of-code-2020/python:$PYTHONPATH
         python -c "import sys; print(sys.version)"
         python -c "import sys; print(sys.path)"
     - name: Test with pytest
