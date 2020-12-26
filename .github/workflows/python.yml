@@ -37,7 +37,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Add modules to path
       run: | 
-        export PYTHONPATH=$PYTHONPATH:~/advent-of-code-2020/python
+        export PYTHONPATH=$PYTHONPATH:$HOME/advent-of-code-2020/python
         python -c "import sys; print(sys.version)"
         python -c "import sys; print(sys.path)"
     - name: Test with pytest
