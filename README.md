@@ -1,6 +1,7 @@
 # 🎄 advent-of-code-2020 🎄
 
 ![Go Solutions](https://github.com/jcockbain/advent-of-code-2020/workflows/Go/badge.svg)
+![Python Solutions](https://github.com/jcockbain/advent-of-code-2020/workflows/Python/badge.svg)
 
 ## Summary
 
