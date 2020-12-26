@@ -1,6 +1,6 @@
 import unittest
 
-from src.day25.main import part_one, part_two, get_loop_size
+from src.day25.main import part_one, get_loop_size
 
 
 class TestDay01(unittest.TestCase):

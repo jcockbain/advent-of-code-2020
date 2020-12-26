@@ -14,7 +14,6 @@ def transform(public_key, loop):
     subject, value = public_key, 1
     for _ in range(loop):
         value = (value * subject) % 20201227
-
     return value
 
 
@@ -23,7 +22,6 @@ def get_loop_size(public_key):
     while value != public_key:
         size += 1
         value = (value * subject) % 20201227
-
     return size
 
 
