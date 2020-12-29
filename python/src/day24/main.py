@@ -18,6 +18,13 @@ def part_one(filename: str) -> int:
     return len(black)
 
 
+def part_two(filename: str) -> int:
+    lines = read_lines(get_path(__file__, filename))
+    black = get_tiles(lines)
+    black = game_of_life(black, 100)
+    return len(black)
+
+
 def get_tiles(lines):
     black = set()
     for line in lines:
@@ -70,13 +77,6 @@ def game_of_life(black, turns):
         black = new_black
 
     return new_black
-
-
-def part_two(filename: str) -> int:
-    lines = read_lines(get_path(__file__, filename))
-    black = get_tiles(lines)
-    black = game_of_life(black, 100)
-    return len(black)
 
 
 if __name__ == '__main__':

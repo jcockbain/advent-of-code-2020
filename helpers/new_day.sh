@@ -16,7 +16,7 @@ cp -n -TR python/test/template $PYTHON_TEST_ROOT
 # go
 
 GOROOT=go/day${DAY}
-cp -n -TR go/template go/day${DAY}
+cp -n -R go/template $GOROOT
 
 # copy input
 

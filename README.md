@@ -188,3 +188,4 @@ pytest
 - [Day 25 - Combo Breaker](https://adventofcode.com/2020/day/25)
 
    - [Python](python/src/day25/main.py)
+   - [Go](go/day25/main.go)
